@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
-    "build:android": "cd android && chmod +x ./gradlew assembleRelease",
+    "build:android": "cd android && gradlew assembleRelease",
     "start": "react-native start",
     "test": "jest"
   },

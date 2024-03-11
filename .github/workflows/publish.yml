@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -20,7 +20,7 @@ jobs:
         uses: actions/cache@v4
         id: cache
         with:
-          path: ~/.npm
+          path: C:/Windows/.npm
           key: ${{ runner.os }}-publish-${{ hashFiles('package-lock.json') }}
           restore-keys: ${{ runner.os }}-publish
 
