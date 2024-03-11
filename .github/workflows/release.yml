@@ -47,6 +47,6 @@ jobs:
 
       - name: Release
         run: |
-          gh release create -d ${{ github.ref_name }} app-release.apk
+          gh release create -d ${{ github.ref_name }} android/app/build/outputs/apk/release/app-release.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
