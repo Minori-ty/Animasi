@@ -11,17 +11,8 @@ permissions:
   repository-projects: write
 
 jobs:
-  # install-and-test:
-  #   runs-on: windows-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - name: Install npm dependencies
-  #       run: |
-  #         yarn
-
-  build-android:
-    # needs: install-and-test
-    runs-on: windows-latest
+  publish:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
