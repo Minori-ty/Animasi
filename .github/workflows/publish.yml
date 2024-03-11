@@ -1,7 +1,7 @@
 on:
   push:
-    tags: [ v* ]
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
   taro_release_job:
