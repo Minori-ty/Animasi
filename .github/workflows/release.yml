@@ -22,7 +22,7 @@ jobs:
         with:
           path: ~/.npm/cache
           key: ${{ runner.os }}-release-${{ hashFiles('package-lock.json') }}
-          restore-keys: ${{ runner.os }}-release
+          restore-keys: ${{ runner.os }}-release-${{ hashFiles('package-lock.json') }}
 
       - name: Set up JDK 20
         uses: actions/setup-java@v1

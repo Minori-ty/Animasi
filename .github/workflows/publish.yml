@@ -22,7 +22,7 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-publish-${{ hashFiles('package-lock.json') }}
-          restore-keys: ${{ runner.os }}-publish
+          restore-keys: ${{ runner.os }}-publish-${{ hashFiles('package-lock.json') }}
 
       - name: Install npm dependencies
         run: |
