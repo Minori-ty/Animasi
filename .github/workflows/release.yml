@@ -1,4 +1,4 @@
-name: react-native-android-build-apk
+name: release
 
 on:
   push:
@@ -26,10 +26,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install npm dependencies
         run: |
-          npm install --legacy-peer-deps
+          yarn
+
       - name: Build Android Release
         run: |
           npm run build:android
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
