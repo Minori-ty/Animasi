@@ -11,17 +11,8 @@ permissions:
   repository-projects: write
 
 jobs:
-  # install-and-test:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Install npm dependencies
-  #       run: |
-  #         npm install --legacy-peer-deps
-
   build-android:
-    # needs: install-and-test
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -60,3 +51,5 @@ jobs:
         with:
           name: v 0.0.1
           tag_name: v 0.0.1
+          files: |
+            app-release.apk
