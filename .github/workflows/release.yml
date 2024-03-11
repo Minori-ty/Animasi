@@ -53,8 +53,12 @@ jobs:
           name: app-release.apk
           path: android/app/build/outputs/apk/release/
 
-      - name: Release
-        run: |
-          gh release create -d ${{ github.ref_name }} android/app/build/outputs/apk/release/app-release.apk
+      - name: Create Release
+        if: steps.check.outputs.changed == 'true'
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: v 0.0.2
+          tag_name: v 0.0.2
+          files: android/app/build/outputs/apk/release/app-release.apk
