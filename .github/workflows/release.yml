@@ -46,7 +46,16 @@ jobs:
           npm run build:android
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: app-release.apk
           path: android/app/build/outputs/apk/release/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: 0.0.1
+        with:
+          name: v 0.0.1
+          tag_name: v 0.0.1
