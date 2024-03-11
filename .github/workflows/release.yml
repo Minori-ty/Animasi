@@ -38,7 +38,7 @@ jobs:
           java-version: 20
 
       - name: Install npm dependencies
-      - if: ${{ steps.yarn.outputs.cache-hit != 'true' }}
+      # - if: ${{ steps.yarn.outputs.cache-hit != 'true' }}
         run: |
           yarn
 
@@ -59,6 +59,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: v 0.0.2
-          tag_name: v 0.0.2
+          name: v0.0.2
+          tag_name: v0.0.2
           files: android/app/build/outputs/apk/release/app-release.apk
