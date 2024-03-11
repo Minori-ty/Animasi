@@ -1,0 +1,23 @@
+name: react-native-android-build-apk
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  repository-projects: write
+
+jobs:
+  taro_release_job:
+    runs-on: ubuntu-latest
+    name: Taro Bundle Release
+    steps:
+      - name: Release Taro React Native bundle
+        uses: zhiqingchen/taro-react-native-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          appname: Taro-Mortgage-calculator
+          logo: https://pic3.58cdn.com.cn/nowater/fangfe/n_v25b1523466b894881b9bdeda7618a8af2.png
