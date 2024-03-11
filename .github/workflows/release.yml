@@ -38,7 +38,7 @@ jobs:
           java-version: 20
 
       - name: Install npm dependencies
-      # - if: ${{ steps.yarn.outputs.cache-hit != 'true' }}
+        - if: ${{ steps.yarn.outputs.cache-hit != 'true' }}
         run: |
           yarn
 
