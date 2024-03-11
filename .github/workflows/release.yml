@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   release:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -20,7 +20,7 @@ jobs:
         uses: actions/cache@v4
         id: cache
         with:
-          path: C:/Windows/.npm/cache
+          path: ~/.npm/cache
           key: ${{ runner.os }}-release-${{ hashFiles('package-lock.json') }}
           restore-keys: ${{ runner.os }}-release
 
@@ -35,7 +35,8 @@ jobs:
 
       - name: Build Android Release
         run: |
-          npm run build:android
+          chmod +x ./gradlew
+          cd android && ./gradlew assembleRelease
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
