@@ -29,7 +29,7 @@ jobs:
           npm install --legacy-peer-deps
       - name: Build Android Release
         run: |
-          cd android && chmod +x ./gradlew assembleRelease
+          npm run build:android
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
