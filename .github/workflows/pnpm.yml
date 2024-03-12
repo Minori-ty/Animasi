@@ -11,29 +11,27 @@ permissions:
   repository-projects: write
 
 jobs:
-  yarn:
+  pnpm:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache yarn
-        uses: actions/cache@v3
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        name: Setup pnpm cache
         id: yarn
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-npm-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-npm-
-            ${{ runner.os }}-
+            ${{ runner.os }}-pnpm-store-
 
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
-        name: List the state of node modules
-        continue-on-error: true
-        run: npm list
-
-      - name: Install npm dependencies
-        run: |
-          yarn
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
 
       - name: Cache gradle
         uses: actions/cache@v3
