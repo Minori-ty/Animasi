@@ -16,9 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache yarn
+      - name: Cache node modules
+        id: cache-npm
         uses: actions/cache@v3
-        id: yarn
         with:
           path: ~/.npm
           key: ${{ runner.os }}-npm-${{ hashFiles('**/yarn.lock') }}
@@ -31,15 +31,22 @@ jobs:
         continue-on-error: true
         run: npm list
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
       - name: Install npm dependencies
         run: |
-          yarn
+          npm i
 
       - name: Cache gradle
         uses: actions/cache@v3
         id: gradle
         with:
-          path: ~/.gradle/caches
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
@@ -67,6 +74,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: v0.0.3
-          tag_name: v0.0.3
+          name: v0.0.5
+          tag_name: v0.0.5
           files: android/app/build/outputs/apk/release/app-release.apk
