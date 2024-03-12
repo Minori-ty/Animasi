@@ -21,8 +21,8 @@ jobs:
         id: yarn
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-release-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-release-
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-npm-
 
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: List the state of node modules
@@ -38,8 +38,8 @@ jobs:
         id: gradle
         with:
           path: ~/.gradle/caches
-          key: ${{ runner.os }}-release-${{ hashFiles('**/*.gradle') }}
-          restore-keys: ${{ runner.os }}-release-
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle-
 
       - name: Set up JDK 20
         uses: actions/setup-java@v1
