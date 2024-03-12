@@ -73,3 +73,4 @@ jobs:
           name: v0.0.3
           tag_name: v0.0.3
           files: android/app/build/outputs/apk/release/app-release.apk
+
