@@ -68,13 +68,13 @@ jobs:
         run: |
           cd android
           chmod +x ./gradlew
-          ./gradlew assembleRelease
+          ./gradlew assembleRelease --no-daemon
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-release.apk
-          path: android/app/build/outputs/apk/release/
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: app-release.apk
+      #     path: android/app/build/outputs/apk/release/
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
