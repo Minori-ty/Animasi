@@ -59,8 +59,8 @@ jobs:
           java-version: 20
           cache: 'gradle'
           cache-dependency-path: | # optional
-            ~/.gradle/caches
-            ~/.gradle/wrapper
+            **/*.gradle*
+            **/gradle-wrapper.properties
 
       - name: Build Android Release
         run: |
