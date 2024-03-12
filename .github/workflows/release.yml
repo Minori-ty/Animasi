@@ -29,7 +29,7 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: List the state of node modules
         continue-on-error: true
-        run: npm list
+        run: echo "没有npm缓存"
 
       - uses: actions/setup-node@v4
         with:
@@ -55,7 +55,7 @@ jobs:
       - if: ${{ steps.cache-gradle.outputs.cache-hit != 'true' }}
         name: List the state of gradle
         continue-on-error: true
-        run: echo "没有缓存"
+        run: echo "没有gradle缓存"
 
       - name: Set up JDK 20
         uses: actions/setup-java@v4
