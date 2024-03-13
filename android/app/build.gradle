@@ -73,7 +73,6 @@ android {
     ndkVersion rootProject.ext.ndkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
-    compileSdkVersion rootProject.ext.compileSdkVersion
 
     namespace "com.awesomeproject"
     defaultConfig {
