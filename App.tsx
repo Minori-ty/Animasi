@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { ScrollView, StyleSheet, Text } from 'react-native'
 import { Button, Image, Overlay } from 'react-native-elements'
 import ImageView from 'react-native-image-viewing'
