@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "react": "18.2.0",
-    "react-native": "0.74.2",
+    "react-native": "0.73.6",
     "react-native-elements": "^3.4.3",
     "react-native-image-viewing": "^0.2.2"
   },
