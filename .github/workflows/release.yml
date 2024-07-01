@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache node modules
+      - name: 缓存 node modules
         id: cache-npm
         uses: actions/cache@v4
         with:
@@ -31,7 +31,7 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Install npm dependencies
+      - name: 安装依赖
         run: |
           npm i
 
@@ -41,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache gradle
+      - name: 缓存 gradle
         id: cache-gradle
         uses: actions/cache@v4
         with:
@@ -68,18 +68,18 @@ jobs:
           node-version: 20
           cache: 'npm'
 
-      - name: Install npm dependencies
+      - name: 安装依赖
         run: |
           npm i
 
-      - name: Set up JDK 20
+      - name: 启动java 21
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: 20
+          java-version: 21
           cache: 'gradle'
 
-      - name: Build Android Release
+      - name: 打包安卓
         run: |
           cd android
           chmod +x ./gradlew
@@ -91,11 +91,11 @@ jobs:
       #     name: app-release.apk
       #     path: android/app/build/outputs/apk/release/
 
-      - name: Create Release
+      - name: 发布 Release
         uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: v0.0.2
-          tag_name: v0.0.2
+          name: v0.0.7
+          tag_name: v0.0.7
           files: android/app/build/outputs/apk/release/app-release.apk
